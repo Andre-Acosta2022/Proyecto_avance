@@ -42,17 +42,18 @@ public class AutorController {
         model.addAttribute("autor", new Autor());
         return "autores/addAutor";
     }
+    /*
     @GetMapping("/save")
     public String saveAutor(Model model){
         model.addAttribute("titulo", "Registrar");
         model.addAttribute("autor", new Autor());
         return "autores/addAutor";
-    }
+    }*/
     @PostMapping("/save")
     public String addAutor(@Valid @ModelAttribute Autor autor, BindingResult result, Model model, @RequestParam("file") MultipartFile imagen, RedirectAttributes attributes ) {  
 
         if(!imagen.isEmpty()){
-            String ruta = "E://recursos//images//files1";
+            String ruta = "E://recursos//images//files2";
 
             try {
                 byte[] bytesImg = imagen.getBytes();

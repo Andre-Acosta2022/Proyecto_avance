@@ -1,6 +1,7 @@
 
 package com.example.plan.controller;
 
+import com.example.plan.entity.Lector;
 import com.example.plan.service.LectorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -24,5 +25,11 @@ public class LectorController {
     public String indexLibro(Model model, @AuthenticationPrincipal User user) {
         model.addAttribute("lectores", lectorService.readAll());
         return "lector/listarLector";
+    }
+    @GetMapping("/add")
+    public String addAutor(Model model){
+        model.addAttribute("titulo", "Registrar");
+        model.addAttribute("lector", new Lector());
+        return "lector/addLector";
     }
 }
