@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/layout}">
+    <head th:replace="layout/layout :: head">
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div class="container-fluid" layout:fragment="page-content">            
+            <nav class="navbar navbar-light bg-light m-2">
+                <h4 class="ps-3"><i class="fa-solid fa-school me-2"></i>Convenio</h4>
+            </nav>
+            <div class="container mt-3">
+                <h3 th:text="${nombre}"></h3>
+                <hr>
+                <form th:action="@{/convenio/save}" method="post" th:object="${convenio}">                    
+                    <div class="mb-3">
+                        <input type="hidden" th:field="*{id}"
+                               <label for="recipient-name" class="col-form-label">Nombre:</label>
+                        <input type="text" th:field="*{nombre}" class="form-control" name="nombre">
+                    </div>
+                    <div class="mb-3">
+                        <label for="recipient-name" class="col-form-label">Fecha de Inicio:</label>
+                        <input type="date" class="form-control" th:field="*{fech_inicio}" id="fecha_inicio">
+                        <small class="form-text text-danger" th:if="${#fields.hasErrors('fecha_inicio')}"
+                               th:errors="*{fecha_inicio}"></small>
+                    </div>
+                    <div class="mb-3">
+                        <label for="recipient-name" class="col-form-label">Fecha de Fin:</label>
+                        <input type="date" class="form-control" th:field="*{fecha_fin}" id="fecha_fin">
+                        <small class="form-text text-danger" th:if="${#fields.hasErrors('fecha_fin')}"
+                               th:errors="*{fecha_fin}"></small>
+                    </div>
+                    <div class="mb-3">
+                        <label for="documentoValidado" class="col-form-label">Documento Validado:</label>
+                        <input type="file" class="form-control" th:field="*{documento_validado}" id="documento_validado">
+                        <small class="form-text text-danger" th:if="${#fields.hasErrors('documento_validado')}" th:errors="*{documento_validado}"></small>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="mb-1">Estado: </label>
+                        <div class="mb-1 d-flex">
+                            <div class="form-check form-switch ms-3">
+                                <input class="form-check-input" type="radio" role="switch" name="estado" value="true" th:field="*{estado}" checked>
+                                <label class="form-check-label" for="estado">Activo</label>                        
+                            </div>
+                            <div class="form-check form-switch ms-3">
+                                <input class="form-check-input" type="radio" role="switch" name="estado" value="false" th:field="*{estado}">
+                                <label class="form-check-label" for="estado">Desactivo</label>                        
+                            </div>
+                        </div>
+                    </div>
+                    <a th:href="@{/convenio}" class="btn btn-secondary" >Cancel</a>
+                    <input type="submit" class="btn btn-primary"/>
+                </form>
+            </div>
+        </div>
+        <!--OTRO SCRIPTS PARA PAGINAS-->
+    <th:block layout:fragment="page-scripts">
+
+    </th:block>
+</body>
+</html>

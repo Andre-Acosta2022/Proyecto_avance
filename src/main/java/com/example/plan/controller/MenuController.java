@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping("/menu")
 public class MenuController {
-   /* 
+
     @GetMapping("/autor")
     public String indexAutor(Model model){
         model.addAttribute("mensaje", "Hola");
@@ -44,5 +44,5 @@ public class MenuController {
     @GetMapping("/user")
     public String indexUser(){
         return "usuarios/user";
-    }*/
+    }   
 }

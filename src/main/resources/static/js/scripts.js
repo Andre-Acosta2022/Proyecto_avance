@@ -20,7 +20,19 @@ window.addEventListener('DOMContentLoaded', event => {
             event.preventDefault();
             document.body.classList.toggle('sb-sidenav-toggled');
             localStorage.setItem('sb|sidebar-toggle', document.body.classList.contains('sb-sidenav-toggled'));
+        
         });
     }
+        
+            $(".sidebar ul li").on('click', function () {
+                $(".sidebar ul li.active").removeClass('active');
+                $(this).addClass('active');
+            });
+             let btn = document.querySelector(".btn");
+            let sidebar = document.querySelector(".sidebar");
 
+            btn.onclick = function () {
+                sidebar.classList.toggle("active");
+            };
+        
 });
